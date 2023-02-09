@@ -8,28 +8,28 @@ namespace EmpWages
 {
     public class EmpWages
     {
+        const int Is_FullTime = 1;
+        const int Is_PartTime = 2;
+        const int Emp_Rate_Per_hour = 20;
         public static void Employee()
         {
-            int Is_FullTime = 1;
-            int Is_PartTime = 2;
-            int Emp_Rate_Per_hour = 20;
             int empHr = 0;
             int empwage = 0;
             Random random = new Random(); 
             int empCheck = random.Next(3);
-            if(empCheck == Is_FullTime)
+            switch(empCheck)
             {
-                Console.WriteLine("Employee is Full time");
-                empHr = 8;
-            }
-            else if(empCheck == Is_PartTime)
-            {
-                Console.WriteLine("Employee is Part Time");
-                empHr = 4;
-            }
-            else
-            {
-                Console.WriteLine("Employee is absent");
+                case Is_FullTime:
+                   Console.WriteLine("Employee is Full time");
+                   empHr = 8;
+                   break;
+                case Is_PartTime:
+                    Console.WriteLine("Employee is Part Time");
+                    empHr = 4;
+                    break;
+                default:
+                    Console.WriteLine("Employee is absent");
+                    break;
             }
             empwage = empHr * Emp_Rate_Per_hour;
             Console.WriteLine("Daily wages will be :" + empwage);
