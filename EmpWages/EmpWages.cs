@@ -11,14 +11,16 @@ namespace EmpWages
         const int Is_FullTime = 1;
         const int Is_PartTime = 2;
         const int Emp_Rate_Per_hour = 20;
-        const int Number_Of_Working_Days = 20;
+        const int Number_Of_Working_Days = 4; //UC6
+        const int Max_Hrs_In_Month = 10;
         public static void Employee()
         {
             int empHr = 0;
-            int empwage = 0;
-            int TotalEmpWage = 0;
+            //int empwage = 0;
+            int TotalEmpHrs = 0;
+            int Total_Working_Days = 0;
 
-            for (int day = 0; day < Number_Of_Working_Days; day++)
+            while(TotalEmpHrs<=Max_Hrs_In_Month && Total_Working_Days<Number_Of_Working_Days)
             {
                 Random random = new Random();
                 int empCheck = random.Next(3);
@@ -36,11 +38,11 @@ namespace EmpWages
                         Console.WriteLine("Employee is absent");
                         break;
                 }
-                empwage = empHr * Emp_Rate_Per_hour;
-                TotalEmpWage+= empwage;
-                Console.WriteLine("Emp wage:"+empwage);
-            }
-               Console.WriteLine("Total employee wage will be :" +TotalEmpWage);
+              TotalEmpHrs+= empHr;
+                Console.WriteLine("Day:"+Total_Working_Days+"EmpHrs:"+empHr);
+           }
+            int TotalEmpWage = TotalEmpHrs * Emp_Rate_Per_hour;
+            Console.WriteLine("Total employee wage will be :" +TotalEmpWage);
         }
     }
 }
